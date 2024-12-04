@@ -1,0 +1,316 @@
+<html><head><base href="https://cdnjs.cloudflare.com/">
+<meta charset="UTF-8">
+<title>MozCommunity - Rede Social para Comunidades de Moçambique</title>
+<style>
+:root {
+  --primary: #009688;
+  --secondary: #ff6f00;
+  --background: #f5f5f5;
+  --text: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+.navbar {
+  background: var(--primary);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.location-selector {
+  background: white;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.location-selector select {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.btn {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.forum-post {
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.event {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.classified {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.new-post {
+  animation: pulse 2s infinite;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <h1>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+      </svg>
+      MozCommunity
+    </h1>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="location-selector">
+    <h2>Selecione sua localização:</h2>
+    <select id="provincia">
+      <option value="">Selecione a Província</option>
+      <option value="maputo">Maputo</option>
+      <option value="gaza">Gaza</option>
+      <option value="inhambane">Inhambane</option>
+      <option value="sofala">Sofala</option>
+      <option value="manica">Manica</option>
+      <option value="tete">Tete</option>
+      <option value="zambezia">Zambézia</option>
+      <option value="nampula">Nampula</option>
+      <option value="cabo-delgado">Cabo Delgado</option>
+      <option value="niassa">Niassa</option>
+    </select>
+    
+    <select id="distrito" disabled>
+      <option value="">Selecione o Distrito</option>
+    </select>
+    
+    <select id="localidade" disabled>
+      <option value="">Selecione a Localidade</option>
+    </select>
+    
+    <select id="bairro" disabled>
+      <option value="">Selecione o Bairro</option>
+    </select>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Fóruns de Discussão</h2>
+      <div class="forum-post">
+        <h3>Limpeza do Bairro</h3>
+        <p>Vamos organizar uma campanha de limpeza no próximo fim de semana?</p>
+        <small>Postado por Maria - há 2 horas</small>
+      </div>
+      <div class="forum-post new-post">
+        <h3>Iluminação Pública</h3>
+        <p>Precisamos melhorar a iluminação na Rua Principal</p>
+        <small>Postado por João - há 5 minutos</small>
+      </div>
+      <button class="btn">Nova Discussão</button>
+    </section>
+
+    <section class="card">
+      <h2>Eventos Comunitários</h2>
+      <div class="event">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)">
+          <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+        </svg>
+        <div>
+          <h3>Feira Cultural</h3>
+          <p>Sábado, 15 de Julho - Praça Central</p>
+        </div>
+      </div>
+      <button class="btn">Adicionar Evento</button>
+    </section>
+
+    <section class="card">
+      <h2>Classificados</h2>
+      <div class="classified">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--secondary)">
+          <path d="M21 6h-4c0-2.76-2.24-5-5-5S7 3.24 7 6H3v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6zm-9-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/>
+        </svg>
+        <div>
+          <h3>Vendo Artesanato Local</h3>
+          <p>Preço negociável - Contacto: 84xxx xxxx</p>
+        </div>
+      </div>
+      <button class="btn">Publicar Anúncio</button>
+    </section>
+  </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Dados de exemplo para localidades
+  const localidades = {
+    maputo: {
+      distritos: {
+        'matola': {
+          localidades: {
+            'machava': ['Patrice Lumumba', 'Infulene', 'Trevo'],
+            'matola-sede': ['Fomento', 'Liberdade', 'Central']
+          }
+        },
+        'marracuene': {
+          localidades: {
+            'marracuene-sede': ['Michafutene', 'Mapulene', 'Centro'],
+            'macandza': ['Nhongonhane', 'Mateque', 'Mumbaze']
+          }
+        }
+      }
+    }
+    // Adicionar mais províncias e seus respectivos dados aqui
+  };
+
+  const provincia = document.getElementById('provincia');
+  const distrito = document.getElementById('distrito');
+  const localidade = document.getElementById('localidade');
+  const bairro = document.getElementById('bairro');
+
+  // Atualizar distritos quando província for selecionada
+  provincia.addEventListener('change', () => {
+    distrito.innerHTML = '<option value="">Selecione o Distrito</option>';
+    localidade.innerHTML = '<option value="">Selecione a Localidade</option>';
+    bairro.innerHTML = '<option value="">Selecione o Bairro</option>';
+    
+    if (provincia.value && localidades[provincia.value]) {
+      const distritos = Object.keys(localidades[provincia.value].distritos);
+      distritos.forEach(dist => {
+        distrito.add(new Option(dist.charAt(0).toUpperCase() + dist.slice(1), dist));
+      });
+      distrito.disabled = false;
+    } else {
+      distrito.disabled = true;
+      localidade.disabled = true;
+      bairro.disabled = true;
+    }
+  });
+
+  // Atualizar localidades quando distrito for selecionado
+  distrito.addEventListener('change', () => {
+    localidade.innerHTML = '<option value="">Selecione a Localidade</option>';
+    bairro.innerHTML = '<option value="">Selecione o Bairro</option>';
+    
+    if (distrito.value && localidades[provincia.value].distritos[distrito.value]) {
+      const locs = Object.keys(localidades[provincia.value].distritos[distrito.value].localidades);
+      locs.forEach(loc => {
+        localidade.add(new Option(loc.charAt(0).toUpperCase() + loc.slice(1), loc));
+      });
+      localidade.disabled = false;
+    } else {
+      localidade.disabled = true;
+      bairro.disabled = true;
+    }
+  });
+
+  // Atualizar bairros quando localidade for selecionada
+  localidade.addEventListener('change', () => {
+    bairro.innerHTML = '<option value="">Selecione o Bairro</option>';
+    
+    if (localidade.value) {
+      const bairros = localidades[provincia.value].distritos[distrito.value].localidades[localidade.value];
+      bairros.forEach(b => {
+        bairro.add(new Option(b, b.toLowerCase()));
+      });
+      bairro.disabled = false;
+    } else {
+      bairro.disabled = true;
+    }
+  });
+
+  // Simulação de novas postagens
+  const addNewPost = () => {
+    const forums = document.querySelector('.forum-post');
+    const newPost = forums.cloneNode(true);
+    newPost.classList.add('new-post');
+    newPost.querySelector('h3').textContent = 'Nova Discussão';
+    newPost.querySelector('p').textContent = 'Uma nova discussão foi iniciada na comunidade!';
+    newPost.querySelector('small').textContent = 'Postado agora';
+    forums.parentNode.insertBefore(newPost, forums);
+  };
+
+  // Adicionar eventos aos botões
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      alert('Função em desenvolvimento! Em breve você poderá interagir com a comunidade.');
+    });
+  });
+
+  // Simular atividade da comunidade a cada 30 segundos
+  setInterval(addNewPost, 30000);
+});
+</script>
+
+</body>
+</html>
